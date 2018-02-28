@@ -1,25 +1,26 @@
 const fs = require('fs')
 const shell = require('shelljs')
-const args = require('./arg').parseArgs()
-const cutImg=require('./cut_img')
 
-const targetPath = process.cwd()
+const cutImg = require('./cut_img')
+
+function createTep(config, targetPath) {
 
 
-function createTep() {
-
-    fs.mkdir(`${targetPath}/img`,function(err) {
-        if(!err){
+    fs.mkdirSync(`${targetPath}/${config.name}`, function (err) {
+        if (!err) {
             console.log('img');
         }
     })
-    fs.readFile('./src/tep.html', 'utf8', function (err, data) {
+    fs.mkdirSync(`${targetPath}/${config.name}/img`, function (err) {
+        if (!err) {
+        }
+    })
+    fs.readFile(__dirname + '/tep.html', 'utf8', function (err, data) {
         if (!err) {
 
-            fs.writeFile(`${targetPath}/index.html`, data, function (err) {
+            fs.writeFile(`${targetPath}/${config.name}/index.html`, data, function (err) {
 
                 if (!err) {
-                    console.log('HTML')
                 }
             })
         }
@@ -27,8 +28,13 @@ function createTep() {
 }
 
 
-module.exports = function () {
-    createTep()
+module.exports = function (config, targetPath) {
 
-    cutImg()
+    if (!config.image) {
+        console.log('image path is required');
+        return
+    }
+
+    createTep(config, targetPath)
+    cutImg(config.height, `${targetPath}/${config.name}`, config.image)
 }
