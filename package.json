@@ -2,17 +2,16 @@
   "name": "img",
   "version": "1.0.0",
   "description": "",
-  "main": "img.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "rimraf": "^2.6.2",
-    "shelljs": "^0.8.1"
-  },
   "dependencies": {
-    "sharp": "github:lovell/sharp#prebuild"
+    "argparse": "^1.0.10",
+    "rimraf": "^2.6.2",
+    "sharp": "github:lovell/sharp#prebuild",
+    "shelljs": "^0.8.1"
   }
 }
