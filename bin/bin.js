@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const init = require('../src/init')
 const targetPath = process.cwd()
 const args = require('../src/arg').parseArgs()
@@ -14,10 +16,10 @@ Object.assign(config, args)
 
 function createProjectName() {
     let date = new Date()
-    let day = date.getDay() < 10 ? `0${date.getDay()}` : date.getDay()
+    let day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
 
-
-    return `act_${date.getFullYear()}0${date.getMonth()}${day}`
+    
+    return `act_${date.getFullYear()}0${date.getMonth()+1}${day}`
 }
 
-init(config,targetPath)
+init(config, targetPath)

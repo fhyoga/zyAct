@@ -42,7 +42,7 @@ function cutImg(baseSize, targetPath,image) {
                         .toFile(`${targetPath}/img/_0${index+1}.png`, function () {
                             if (index == 1) {
                                 let commandStr=`node ${path.resolve(__dirname,'../node_modules/rimraf/bin.js')} ${targetPath}/img/temp*.png`
-                                console.log(path.resolve(__dirname,'../node_modules/rimraf/bin.js'));
+                                console.log('${targetPath}/img   temp clear');
                                 shell.exec(commandStr)
                             }
                         })
